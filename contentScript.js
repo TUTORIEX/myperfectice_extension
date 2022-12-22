@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
           "#page-wrapper > p-student > app-learning-test > div.adaptive-question > div > div > div.d-block.d-lg-none.fixed-bottom.ng-star-inserted > div > a"
         )
         .click();
-    }, 2000);
+    }, 3000);
 
     setTimeout(() => {
       document
@@ -32,7 +32,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
           "#page-wrapper > p-student > app-learning-test > div.adaptive-question > div > div > div.save-next-btn.d-block.d-lg-none.fixed-bottom.ng-star-inserted > a"
         )
         .click();
-    }, 3000);
+    }, 1000);
   }
 
   if (message.msg == "start") {
