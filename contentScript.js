@@ -7,10 +7,14 @@
 */
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  console.log("Script Started");
   if (message.msg == "Sending Data") {
     let ansKey = message.keys;
+    let mint=20; // min-time : 20 sec
+    let maxt=60; // max-time : 60 sec
+    let t=Math.floor(Math.random()*(maxt - mint + 1) + mint)*1000;
     console.log(ansKey);
-    //time out for 2 secoond
+    
     setTimeout(function () {
       document
         .querySelector(
@@ -19,12 +23,13 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
           }) > div > label > span`
         )
         .click();
+        setTimeout(()=>{
       document
         .querySelector(
           "#page-wrapper > p-student > app-learning-test > div.adaptive-question > div > div > div.d-block.d-lg-none.fixed-bottom.ng-star-inserted > div > a"
         )
-        .click();
-    }, 2000);
+        .click();},1000); // wait 1 sec after option click otherwise gives error null on click event
+    }, t);
 
     setTimeout(() => {
       document
@@ -32,7 +37,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
           "#page-wrapper > p-student > app-learning-test > div.adaptive-question > div > div > div.save-next-btn.d-block.d-lg-none.fixed-bottom.ng-star-inserted > a"
         )
         .click();
-    }, 3000);
+    }, t+3000); // loading time for solution 3 sec maybe?
   }
 
   if (message.msg == "start") {
